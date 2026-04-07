@@ -14,6 +14,30 @@
     href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="{{ asset('assets/css/landing.css') }}">
+  <style>
+    /* Styling modern ramah anak & guru untuk gambar hero tiap section */
+    .section-hero-img {
+      width: 100%;
+      height: auto;
+      max-height: 480px;
+      object-fit: cover;
+      border-radius: 28px;
+      margin: 2rem auto 3rem;
+      display: block;
+      /* Soft drop-shadow gives a floating, modern friendly feel */
+      filter: drop-shadow(0 16px 32px rgba(0, 0, 0, 0.08));
+    }
+    
+    .hero-main-img {
+      width: 100%;
+      max-height: 420px;
+      object-fit: cover;
+      border-radius: 32px;
+      margin-top: 2.5rem;
+      border: 8px solid rgba(255, 255, 255, 0.6);
+      box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.12);
+    }
+  </style>
 </head>
 
 <body>
@@ -45,6 +69,10 @@
         </div>
 
         <p class="trust-note">Tanpa instalasi • Bisa langsung digunakan</p>
+        
+        @if(!empty($heroImage))
+        <img src="{{ asset('storage/' . $heroImage) }}" alt="{{ $heroHeadline }}" class="hero-main-img" loading="lazy">
+        @endif
       </div>
 
       <aside class="hero-card reveal delay-1" aria-label="Form Lead Cepat">
@@ -107,6 +135,9 @@
     <section class="section section-alt reveal" id="problem">
       <div class="container">
         <h2>{{ $problemTitle }}</h2>
+        @if(!empty($problemImage))
+        <img src="{{ asset('storage/' . $problemImage) }}" alt="{{ $problemTitle }}" class="section-hero-img" loading="lazy">
+        @endif
         <div class="grid grid-4">
           <article class="card">
             <p>Guru capek koreksi manual</p>
@@ -128,6 +159,9 @@
     <section class="section reveal" id="benefit">
       <div class="container">
         <h2>{{ $benefitTitle }}</h2>
+        @if(!empty($benefitImage))
+        <img src="{{ asset('storage/' . $benefitImage) }}" alt="{{ $benefitTitle }}" class="section-hero-img" loading="lazy">
+        @endif
         <div class="grid grid-2">
           <article class="card metric"><strong>90%</strong>
             <p>Hemat waktu koreksi hingga 90%</p>
@@ -148,6 +182,9 @@
     <section class="section section-alt reveal" id="solution">
       <div class="container">
         <h2>{{ $solutionTitle }}</h2>
+        @if(!empty($solutionImage))
+        <img src="{{ asset('storage/' . $solutionImage) }}" alt="{{ $solutionTitle }}" class="section-hero-img" loading="lazy">
+        @endif
         <div class="grid grid-2">
           <article class="card">
             <h3>Ujian online</h3>
@@ -172,6 +209,9 @@
     <section class="section reveal" id="features">
       <div class="container">
         <h2>{{ $featuresTitle }}</h2>
+        @if(!empty($featuresImage))
+        <img src="{{ asset('storage/' . $featuresImage) }}" alt="{{ $featuresTitle }}" class="section-hero-img" loading="lazy">
+        @endif
         <div class="feature-list">
           <article class="card">
             <h3>Ujian fleksibel</h3>
@@ -196,6 +236,9 @@
     <section class="section section-alt reveal" id="how-it-works">
       <div class="container">
         <h2>{{ $howitTitle }}</h2>
+        @if(!empty($howitImage))
+        <img src="{{ asset('storage/' . $howitImage) }}" alt="{{ $howitTitle }}" class="section-hero-img" loading="lazy">
+        @endif
         <ol class="steps">
           <li>Guru membuat ujian</li>
           <li>Siswa mengerjakan</li>
@@ -208,6 +251,9 @@
     <section class="section reveal" id="pricing">
       <div class="container pricing-box">
         <h2>{{ $pricingTitle }}</h2>
+        @if(!empty($pricingImage))
+        <img src="{{ asset('storage/' . $pricingImage) }}" alt="{{ $pricingTitle }}" class="section-hero-img" loading="lazy" style="max-height: 250px;">
+        @endif
         <p class="price">{{ $pricingNote }}</p>
         <ul>
           <li>Semua fitur</li>
@@ -222,6 +268,9 @@
     <section class="section final-cta reveal" id="final-cta">
       <div class="container">
         <h2>{{ $finalCtaTitle }}</h2>
+        @if(!empty($finalCtaImage))
+        <img src="{{ asset('storage/' . $finalCtaImage) }}" alt="{{ $finalCtaTitle }}" class="section-hero-img" loading="lazy">
+        @endif
         <p>{{ $finalCtaSubtitle }}</p>
         <div class="hero-cta center">
           <a href="#lead-form" class="btn btn-primary js-track" data-event="cta_click" data-label="final_coba_demo">Coba

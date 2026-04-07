@@ -6,7 +6,7 @@
   <p class="text-sm text-slate-500">Atur semua text dan konten landing page dari sini.</p>
 </div>
 
-<form action="{{ route('admin.settings.update') }}" method="POST" class="space-y-6">
+<form action="{{ route('admin.settings.update') }}" method="POST" enctype="multipart/form-data" class="space-y-6">
   @csrf
   @method('PUT')
 
@@ -51,6 +51,17 @@
         <p class="mt-1 text-xs text-rose-600">{{ $message }}</p>
         @enderror
       </div>
+
+      <div class="pt-4 border-t border-slate-100">
+        <label for="hero_image" class="mb-2 block text-sm font-medium text-slate-700">Gambar Hero (Opsional)</label>
+        @if(!empty($settings['hero_image']))
+        <img src="{{ asset('storage/' . $settings['hero_image']) }}" class="mb-3 rounded-lg border border-slate-200" style="height: 80px; width: auto; object-fit: cover;">
+        @endif
+        <input type="file" id="hero_image" name="hero_image" accept="image/*" class="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+        @error('hero_image')
+        <p class="mt-1 text-xs text-rose-600">{{ $message }}</p>
+        @enderror
+      </div>
     </div>
   </div>
 
@@ -73,6 +84,14 @@
         <p class="mt-1 text-xs text-rose-600">{{ $message }}</p>
         @enderror
       </div>
+
+      <div class="pt-4 border-t border-slate-100">
+        <label for="problem_image" class="mb-2 block text-sm font-medium text-slate-700">Gambar Section Tantangan (Opsional)</label>
+        @if(!empty($settings['problem_image']))
+        <img src="{{ asset('storage/' . $settings['problem_image']) }}" class="mb-3 rounded-lg border border-slate-200" style="height: 80px; width: auto; object-fit: cover;">
+        @endif
+        <input type="file" id="problem_image" name="problem_image" accept="image/*" class="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+      </div>
     </div>
   </div>
 
@@ -86,6 +105,13 @@
         @error('benefit_title')
         <p class="mt-1 text-xs text-rose-600">{{ $message }}</p>
         @enderror
+      </div>
+      <div class="pt-4 border-t border-slate-100">
+        <label for="benefit_image" class="mb-2 block text-sm font-medium text-slate-700">Gambar Section Hasil (Opsional)</label>
+        @if(!empty($settings['benefit_image']))
+        <img src="{{ asset('storage/' . $settings['benefit_image']) }}" class="mb-3 rounded-lg border border-slate-200" style="height: 80px; width: auto; object-fit: cover;">
+        @endif
+        <input type="file" id="benefit_image" name="benefit_image" accept="image/*" class="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
       </div>
     </div>
   </div>
@@ -101,6 +127,13 @@
         <p class="mt-1 text-xs text-rose-600">{{ $message }}</p>
         @enderror
       </div>
+      <div class="pt-4 border-t border-slate-100">
+        <label for="solution_image" class="mb-2 block text-sm font-medium text-slate-700">Gambar Section Solusi (Opsional)</label>
+        @if(!empty($settings['solution_image']))
+        <img src="{{ asset('storage/' . $settings['solution_image']) }}" class="mb-3 rounded-lg border border-slate-200" style="height: 80px; width: auto; object-fit: cover;">
+        @endif
+        <input type="file" id="solution_image" name="solution_image" accept="image/*" class="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+      </div>
     </div>
   </div>
 
@@ -115,6 +148,13 @@
         <p class="mt-1 text-xs text-rose-600">{{ $message }}</p>
         @enderror
       </div>
+      <div class="pt-4 border-t border-slate-100">
+        <label for="features_image" class="mb-2 block text-sm font-medium text-slate-700">Gambar Section Fitur (Opsional)</label>
+        @if(!empty($settings['features_image']))
+        <img src="{{ asset('storage/' . $settings['features_image']) }}" class="mb-3 rounded-lg border border-slate-200" style="height: 80px; width: auto; object-fit: cover;">
+        @endif
+        <input type="file" id="features_image" name="features_image" accept="image/*" class="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+      </div>
     </div>
   </div>
 
@@ -128,6 +168,13 @@
         @error('howit_title')
         <p class="mt-1 text-xs text-rose-600">{{ $message }}</p>
         @enderror
+      </div>
+      <div class="pt-4 border-t border-slate-100">
+        <label for="howit_image" class="mb-2 block text-sm font-medium text-slate-700">Gambar Section Cara Kerja (Opsional)</label>
+        @if(!empty($settings['howit_image']))
+        <img src="{{ asset('storage/' . $settings['howit_image']) }}" class="mb-3 rounded-lg border border-slate-200" style="height: 80px; width: auto; object-fit: cover;">
+        @endif
+        <input type="file" id="howit_image" name="howit_image" accept="image/*" class="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
       </div>
     </div>
   </div>
@@ -151,6 +198,14 @@
         <p class="mt-1 text-xs text-rose-600">{{ $message }}</p>
         @enderror
       </div>
+
+      <div class="pt-4 border-t border-slate-100">
+        <label for="pricing_image" class="mb-2 block text-sm font-medium text-slate-700">Gambar Section Pricing (Opsional)</label>
+        @if(!empty($settings['pricing_image']))
+        <img src="{{ asset('storage/' . $settings['pricing_image']) }}" class="mb-3 rounded-lg border border-slate-200" style="height: 80px; width: auto; object-fit: cover;">
+        @endif
+        <input type="file" id="pricing_image" name="pricing_image" accept="image/*" class="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+      </div>
     </div>
   </div>
 
@@ -172,6 +227,14 @@
         @error('final_cta_subtitle')
         <p class="mt-1 text-xs text-rose-600">{{ $message }}</p>
         @enderror
+      </div>
+
+      <div class="pt-4 border-t border-slate-100">
+        <label for="final_cta_image" class="mb-2 block text-sm font-medium text-slate-700">Gambar Final CTA (Opsional)</label>
+        @if(!empty($settings['final_cta_image']))
+        <img src="{{ asset('storage/' . $settings['final_cta_image']) }}" class="mb-3 rounded-lg border border-slate-200" style="height: 80px; width: auto; object-fit: cover;">
+        @endif
+        <input type="file" id="final_cta_image" name="final_cta_image" accept="image/*" class="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
       </div>
     </div>
   </div>

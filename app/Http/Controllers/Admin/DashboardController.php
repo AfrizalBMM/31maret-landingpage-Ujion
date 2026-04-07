@@ -50,6 +50,14 @@ class DashboardController extends Controller
         'pricing_note' => SiteSetting::getValue('pricing_note', 'Mulai dari Rp 15.000 / siswa / semester'),
         'final_cta_title' => SiteSetting::getValue('final_cta_title', 'Siap Meningkatkan Sistem Ujian Sekolah Anda?'),
         'final_cta_subtitle' => SiteSetting::getValue('final_cta_subtitle', 'Mulai dari satu kelas terlebih dahulu.'),
+        'hero_image' => SiteSetting::getValue('hero_image'),
+        'problem_image' => SiteSetting::getValue('problem_image'),
+        'benefit_image' => SiteSetting::getValue('benefit_image'),
+        'solution_image' => SiteSetting::getValue('solution_image'),
+        'features_image' => SiteSetting::getValue('features_image'),
+        'howit_image' => SiteSetting::getValue('howit_image'),
+        'pricing_image' => SiteSetting::getValue('pricing_image'),
+        'final_cta_image' => SiteSetting::getValue('final_cta_image'),
       ],
     ]);
   }
@@ -71,10 +79,39 @@ class DashboardController extends Controller
       'pricing_note' => ['required', 'string', 'max:150'],
       'final_cta_title' => ['required', 'string', 'max:150'],
       'final_cta_subtitle' => ['required', 'string', 'max:150'],
+      'hero_image' => ['nullable', 'image', 'max:2048'],
+      'problem_image' => ['nullable', 'image', 'max:2048'],
+      'benefit_image' => ['nullable', 'image', 'max:2048'],
+      'solution_image' => ['nullable', 'image', 'max:2048'],
+      'features_image' => ['nullable', 'image', 'max:2048'],
+      'howit_image' => ['nullable', 'image', 'max:2048'],
+      'pricing_image' => ['nullable', 'image', 'max:2048'],
+      'final_cta_image' => ['nullable', 'image', 'max:2048'],
     ]);
 
-    foreach ($payload as $key => $value) {
-      SiteSetting::setValue($key, $value);
+    $textFields = [
+      'brand', 'whatsapp_number', 'hero_headline', 'hero_subheadline',
+      'problem_title', 'problem_close', 'benefit_title', 'solution_title',
+      'features_title', 'howit_title', 'pricing_title', 'pricing_note',
+      'final_cta_title', 'final_cta_subtitle'
+    ];
+
+    foreach ($textFields as $key) {
+      if (isset($payload[$key])) {
+        SiteSetting::setValue($key, $payload[$key]);
+      }
+    }
+
+    $imageFields = [
+      'hero_image', 'problem_image', 'benefit_image', 'solution_image',
+      'features_image', 'howit_image', 'pricing_image', 'final_cta_image'
+    ];
+
+    foreach ($imageFields as $field) {
+      if ($request->hasFile($field)) {
+        $path = $request->file($field)->store('landing', 'public');
+        SiteSetting::setValue($field, $path);
+      }
     }
 
     return back()->with('status', 'Pengaturan landing page berhasil diperbarui.');

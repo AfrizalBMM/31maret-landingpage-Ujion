@@ -32,6 +32,14 @@ class LandingPageController extends Controller
       'pricingNote' => SiteSetting::getValue('pricing_note', 'Mulai dari Rp 15.000 / siswa / semester'),
       'finalCtaTitle' => SiteSetting::getValue('final_cta_title', 'Siap Meningkatkan Sistem Ujian Sekolah Anda?'),
       'finalCtaSubtitle' => SiteSetting::getValue('final_cta_subtitle', 'Mulai dari satu kelas terlebih dahulu.'),
+      'heroImage' => SiteSetting::getValue('hero_image'),
+      'problemImage' => SiteSetting::getValue('problem_image'),
+      'benefitImage' => SiteSetting::getValue('benefit_image'),
+      'solutionImage' => SiteSetting::getValue('solution_image'),
+      'featuresImage' => SiteSetting::getValue('features_image'),
+      'howitImage' => SiteSetting::getValue('howit_image'),
+      'pricingImage' => SiteSetting::getValue('pricing_image'),
+      'finalCtaImage' => SiteSetting::getValue('final_cta_image'),
     ]);
   }
 
